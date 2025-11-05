@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npx ng build --configuration production",
+    "build": "./node_modules/.bin/ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "vercel-build": "npm install && ./node_modules/.bin/ng build --configuration production"
   },
   "private": true,
   "dependencies": {
