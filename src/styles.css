@@ -1,0 +1,30 @@
+/* src/styles.css ya component ke css me */
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.widget {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  width: 30%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+/* src/styles.css ya component ke css me */
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.widget {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  width: 30%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}

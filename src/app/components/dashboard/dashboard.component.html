@@ -1,0 +1,238 @@
+ <!-- <div class="dashboard-container">
+  <div *ngFor="let widget of (widgets$ | async)" class="widget">
+
+   <div *ngFor="let widget of widgets" class="widget"> -->
+    <!-- <h3>{{ widget.title }}</h3>
+
+    <ng-container [ngSwitch]="widget.type">
+      <app-user-widget *ngSwitchCase="'user-widget'"></app-user-widget>
+      <app-sales-widget *ngSwitchCase="'sales-widget'"></app-sales-widget>
+      <app-notifications-widget *ngSwitchCase="'notifications-widget'"></app-notifications-widget>
+    </ng-container>
+  </div>
+</div>  --> 
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+<div class="p-6">
+  <h1 class="text-2xl font-bold mb-4">Dynamic Dashboard</h1>
+
+  <div class="mb-4 space-x-2">
+    <button class="px-4 py-2 bg-blue-600 text-white rounded" (click)="addNewWidget('UserList')">Add User List</button>
+    <button class="px-4 py-2 bg-green-600 text-white rounded" (click)="addNewWidget('SalesChart')">Add Sales Chart</button>
+    <button class="px-4 py-2 bg-purple-600 text-white rounded" (click)="addNewWidget('Notifications')">Add Notifications</button>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let widget of widgets$ | async" class="border p-4 rounded shadow">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="font-semibold">{{ widget.title }}</h3>
+        <button class="text-red-600" (click)="removeWidget(widget.id)">X</button>
+      </div>
+
+      <ng-container [ngSwitch]="widget.type">
+        <app-user-list-widget *ngSwitchCase="'UserList'"></app-user-list-widget>
+        <app-sales-chart-widget *ngSwitchCase="'SalesChart'"></app-sales-chart-widget>
+        <app-notifications-widget *ngSwitchCase="'Notifications'"></app-notifications-widget>
+        <p *ngSwitchDefault>Unknown widget type</p>
+      </ng-container>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="p-6">
+  <h1 class="text-2xl font-bold mb-4">Dynamic Dashboard</h1>
+
+  <div class="mb-4 space-x-2">
+    <button class="px-4 py-2 bg-blue-600 text-white rounded" (click)="addNewWidget('user-widget')">Add User Widget</button>
+    <button class="px-4 py-2 bg-green-600 text-white rounded" (click)="addNewWidget('sales-widget')">Add Sales Widget</button>
+    <button class="px-4 py-2 bg-purple-600 text-white rounded" (click)="addNewWidget('notifications-widget')">Add Notifications Widget</button>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let widget of (widgets$ | async)" class="border p-4 rounded shadow">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="font-semibold">{{ widget }}</h3>
+        <button class="text-red-600" (click)="removeWidget(widget)">X</button>
+      </div>
+
+      <ng-container [ngSwitch]="widget">
+        <app-user-widget *ngSwitchCase="'user-widget'"></app-user-widget>
+        <app-sales-widget *ngSwitchCase="'sales-widget'"></app-sales-widget>
+        <app-notifications-widget *ngSwitchCase="'notifications-widget'"></app-notifications-widget>
+        <p *ngSwitchDefault>Unknown widget</p>
+      </ng-container>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Dynamic Dashboard</h1>
+
+  <div class="button-group">
+    <button class="btn btn-blue" (click)="addNewWidget('user-widget')">Add User Widget</button>
+    <button class="btn btn-green" (click)="addNewWidget('sales-widget')">Add Sales Widget</button>
+    <button class="btn btn-purple" (click)="addNewWidget('notifications-widget')">Add Notifications Widget</button>
+  </div>
+
+  <div class="widgets-grid">
+    <div *ngFor="let widget of (widgets$ | async)" class="widget">
+      <div class="widget-header">
+        <h3>{{ widget }}</h3>
+        <button class="remove-btn" (click)="removeWidget(widget)">×</button>
+      </div>
+
+      <div class="widget-body">
+        <ng-container [ngSwitch]="widget">
+          <app-user-widget *ngSwitchCase="'user-widget'"></app-user-widget>
+          <app-sales-widget *ngSwitchCase="'sales-widget'"></app-sales-widget>
+          <app-notifications-widget *ngSwitchCase="'notifications-widget'"></app-notifications-widget>
+          <p *ngSwitchDefault>Unknown widget</p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+  -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+  <div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Dynamic Dashboard</h1>
+    <div class="button-group">
+      <button (click)="addNewWidget('user-widget')" class="btn btn-blue">Add User Widget</button>
+      <button (click)="addNewWidget('sales-widget')" class="btn btn-green">Add Sales Widget</button>
+      <button (click)="addNewWidget('notifications-widget')" class="btn btn-purple">Add Notifications Widget</button>
+    </div>
+  </header>
+
+  <div class="widget-grid">
+    <div *ngFor="let widget of (widgets$ | async)" class="widget-card">
+      <div class="widget-header">
+        <h3>{{ widget }}</h3>
+        <button class="close-btn" (click)="removeWidget(widget)">×</button>
+      </div>
+
+      <div class="widget-content">
+        <ng-container [ngSwitch]="widget">
+          <app-user-widget *ngSwitchCase="'user-widget'"></app-user-widget>
+          <app-sales-widget *ngSwitchCase="'sales-widget'"></app-sales-widget>
+          <app-notifications-widget *ngSwitchCase="'notifications-widget'"></app-notifications-widget>
+          <p *ngSwitchDefault>Unknown widget</p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Dynamic Dashboard</h1>
+    <div class="button-group">
+      <button (click)="addNewWidget('user-widget')" class="btn btn-blue">Add User Widget</button>
+      <button (click)="addNewWidget('sales-widget')" class="btn btn-green">Add Sales Widget</button>
+      <button (click)="addNewWidget('notifications-widget')" class="btn btn-purple">Add Notifications Widget</button>
+    </div>
+  </header>
+
+  <div class="widget-grid">
+    <div *ngFor="let widget of (widgets$ | async)" class="widget-card">
+      <div class="widget-header">
+        <h3>{{ widget | titlecase }}</h3>
+        <button class="close-btn" (click)="removeWidget(widget)">×</button>
+      </div>
+
+      <div class="widget-content">
+        <ng-container [ngSwitch]="widget">
+          <app-user-widget *ngSwitchCase="'user-widget'"></app-user-widget>
+          <app-sales-widget *ngSwitchCase="'sales-widget'"></app-sales-widget>
+          <app-notifications-widget *ngSwitchCase="'notifications-widget'"></app-notifications-widget>
+          <p *ngSwitchDefault>Unknown widget</p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

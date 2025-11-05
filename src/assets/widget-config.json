@@ -1,0 +1,34 @@
+[
+  {
+    "type": "user-widget",
+    "title": "User List",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/users"
+  },
+  {
+    "type": "sales-widget",
+    "title": "Sales Chart",
+    "apiEndpoint": ""
+  },
+  {
+    "type": "notifications-widget",
+    "title": "Notifications",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/posts"
+  }
+]
+[
+  {
+    "type": "user-widget",
+    "title": "User List",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/users"
+  },
+  {
+    "type": "sales-widget",
+    "title": "Sales Chart",
+    "apiEndpoint": ""
+  },
+  {
+    "type": "notifications-widget",
+    "title": "Notifications",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/posts"
+  }
+]

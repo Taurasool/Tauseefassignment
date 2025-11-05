@@ -1,0 +1,153 @@
+<!-- <div *ngIf="loading">Loading sales data...</div>
+
+<table *ngIf="!loading" border="1" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product</th>
+      <th>Amount (₹)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sale of sales; trackBy: trackById">
+      <td>{{ sale.id }}</td>
+      <td>{{ sale.product }}</td>
+      <td>{{ sale.amount }}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+
+
+
+
+
+
+<!-- 
+<div *ngIf="loading">Loading sales data...</div>
+
+<div *ngIf="!loading">
+  <input
+    type="text"
+    placeholder="Search product..."
+    [(ngModel)]="searchTerm"
+    (input)="searchSales()"
+    style="margin-bottom: 10px; padding: 5px; width: 100%;"
+  />
+
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of filteredSales; trackBy: trackById">
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.title }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div *ngIf="loading">Loading sales data...</div>
+
+<div *ngIf="!loading">
+  <input
+    type="text"
+    placeholder="Search product..."
+    [(ngModel)]="searchTerm"
+    (input)="searchSales()"
+    style="margin-bottom: 10px; padding: 5px; width: 100%;"
+  />
+
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Amount (₹)</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of filteredSales; trackBy: trackById">
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.product }}</td> <!-- ✅ Correct key -->
+        <!-- <td>{{ sale.amount }}</td>
+        <td>{{ sale.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> --> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="p-4 bg-white rounded-xl shadow-md">
+  <h2 class="text-lg font-bold mb-3">Sales Data</h2>
+
+  <div *ngIf="loading">Loading sales data...</div>
+
+  <div *ngIf="!loading" class="mb-3">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="searchSales()"
+      placeholder="Search product..."
+      class="border p-2 w-full rounded-md"
+    />
+  </div>
+
+  <table *ngIf="!loading" class="w-full border-collapse">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="p-2 text-left">Product</th>
+        <th class="p-2 text-left">Amount</th>
+        <th class="p-2 text-left">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of filteredSales; trackBy: trackById">
+        <td class="p-2">{{ sale.product }}</td>
+        <td class="p-2">{{ sale.amount | currency:'INR' }}</td>
+        <td class="p-2">{{ sale.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
