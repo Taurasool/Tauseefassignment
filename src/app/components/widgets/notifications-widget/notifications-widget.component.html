@@ -22,7 +22,7 @@
 
 
 
-
+<!-- 
 
 <div class="p-4 bg-white rounded-xl shadow-md">
   <h2 class="text-lg font-bold mb-2">Notifications</h2>
@@ -37,4 +37,68 @@
       </div>
     </li>
   </ul>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="p-4 bg-white rounded-xl shadow-md notification-container">
+  <h2 class="text-lg font-bold mb-3 text-gray-800">Notifications</h2>
+
+  <div *ngIf="loading" class="loading">
+    Loading notifications...
+  </div>
+
+  <div *ngIf="!loading">
+    <!-- Desktop List View -->
+    <div class="desktop-list">
+      <div *ngFor="let note of notifications; trackBy: trackById" 
+           class="notification-item"
+           [class.priority-high]="note.priority === 'high'"
+           [class.priority-medium]="note.priority === 'medium'"
+           [class.priority-low]="note.priority === 'low'">
+        <div class="notification-content">
+          {{ note.message }}
+        </div>
+        <div class="notification-time">
+          {{ note.time }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Card View -->
+    <div class="mobile-cards">
+      <div *ngFor="let note of notifications; trackBy: trackById" 
+           class="mobile-notification"
+           [class.priority-high]="note.priority === 'high'"
+           [class.priority-medium]="note.priority === 'medium'"
+           [class.priority-low]="note.priority === 'low'">
+        <div class="mobile-content">
+          {{ note.message }}
+        </div>
+        <div class="mobile-time">
+          {{ note.time }}
+        </div>
+      </div>
+    </div>
+
+    <!-- No notifications message -->
+    <div *ngIf="notifications.length === 0 && !loading" class="no-notifications">
+      No notifications available
+    </div>
+  </div>
 </div>

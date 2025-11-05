@@ -117,7 +117,7 @@
 
 
 
-
+<!-- 
 <div class="p-4 bg-white rounded-xl shadow-md">
   <h2 class="text-lg font-bold mb-3">Sales Data</h2>
 
@@ -149,5 +149,85 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="p-4 bg-white rounded-xl shadow-md">
+  <h2 class="text-lg font-bold mb-3 text-gray-800">Sales Data</h2>
+
+  <div *ngIf="loading" class="loading">
+    Loading sales data...
+  </div>
+
+  <div *ngIf="!loading">
+    <!-- Search Box -->
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="searchSales()"
+      placeholder="Search product..."
+      class="search-box"
+    />
+
+    <!-- Desktop Table -->
+    <div class="table-wrapper">
+      <table class="desktop-table">
+        <thead>
+          <tr>
+            <th class="w-2/5">Product</th>
+            <th class="w-2/5">Amount</th>
+            <th class="w-1/5">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sale of filteredSales; trackBy: trackById">
+            <td class="font-medium text-gray-900">{{ sale.product }}</td>
+            <td class="amount-positive">{{ sale.amount | currency:'INR' }}</td>
+            <td class="text-gray-600">{{ sale.date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile Cards -->
+    <div class="mobile-cards">
+      <div *ngFor="let sale of filteredSales; trackBy: trackById" class="sale-card">
+        <div class="sale-card-row">
+          <span class="sale-card-label">Product:</span>
+          <span class="sale-card-value font-medium text-gray-900">{{ sale.product }}</span>
+        </div>
+        <div class="sale-card-row">
+          <span class="sale-card-label">Amount:</span>
+          <span class="sale-card-value amount-positive">{{ sale.amount | currency:'INR' }}</span>
+        </div>
+        <div class="sale-card-row">
+          <span class="sale-card-label">Date:</span>
+          <span class="sale-card-value text-gray-600">{{ sale.date }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- No results message -->
+    <div *ngIf="filteredSales.length === 0 && !loading" class="no-data">
+      No sales data found
+    </div>
+  </div>
+</div>

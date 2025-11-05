@@ -212,13 +212,63 @@
 
 
 
+// import { Component } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+
+// @Component({
+//   selector: 'app-notifications-widget',
+//   standalone: true,
+//   imports: [CommonModule],
+//   templateUrl: './notifications-widget.component.html',
+//   styleUrls: ['./notifications-widget.component.css']
+// })
+// export class NotificationsWidgetComponent {
+//   loading = true;
+//   notifications: any[] = [];
+
+//   ngOnInit() {
+//     setTimeout(() => {
+//       this.notifications = [
+//         { id: 1, message: 'Server restarted successfully' },
+//         { id: 2, message: 'New user registered' },
+//         { id: 3, message: 'Backup completed' }
+//       ];
+//       this.loading = false;
+//     }, 1000);
+//   }
+
+//   trackById(index: number, item: any) {
+//     return item.id;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-notifications-widget',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './notifications-widget.component.html',
   styleUrls: ['./notifications-widget.component.css']
 })
@@ -226,15 +276,24 @@ export class NotificationsWidgetComponent {
   loading = true;
   notifications: any[] = [];
 
+  constructor(private http: HttpClient) {}
+
   ngOnInit() {
-    setTimeout(() => {
-      this.notifications = [
-        { id: 1, message: 'Server restarted successfully' },
-        { id: 2, message: 'New user registered' },
-        { id: 3, message: 'Backup completed' }
-      ];
-      this.loading = false;
-    }, 1000);
+    // Dummy API for notifications
+    this.http.get<any[]>('https://jsonplaceholder.typicode.com/comments?_limit=5')
+      .subscribe({
+        next: (data) => {
+          this.notifications = data.map(item => ({
+            id: item.id,
+            message: item.body
+          }));
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error fetching notifications:', err);
+          this.loading = false;
+        }
+      });
   }
 
   trackById(index: number, item: any) {

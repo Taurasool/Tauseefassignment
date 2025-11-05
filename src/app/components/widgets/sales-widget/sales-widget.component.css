@@ -1,4 +1,4 @@
-table {
+/* table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 10px;
@@ -17,4 +17,164 @@ th {
 div {
   font-size: 14px;
   font-weight: 500;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Desktop table style */
+.desktop-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.desktop-table th {
+  background-color: #f8fafc;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.desktop-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4b5563;
+}
+
+.desktop-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Mobile card layout */
+.mobile-cards {
+  display: none;
+  margin-top: 12px;
+}
+
+.sale-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sale-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.sale-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sale-card-row:last-child {
+  border-bottom: none;
+}
+
+.sale-card-label {
+  font-weight: 600;
+  color: #374151;
+  min-width: 80px;
+}
+
+.sale-card-value {
+  color: #4b5563;
+  text-align: right;
+  flex: 1;
+}
+
+/* Amount styling */
+.amount-positive {
+  color: #059669;
+  font-weight: 600;
+}
+
+/* Search box styling */
+.search-box {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-box::placeholder {
+  color: #9ca3af;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+  
+  .mobile-cards {
+    display: block;
+  }
+  
+  .table-wrapper {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-top: 12px;
+  }
+  
+  .desktop-table {
+    display: table;
+    min-width: 500px;
+  }
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+  font-style: italic;
 }

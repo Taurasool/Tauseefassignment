@@ -323,8 +323,66 @@
 
 
 
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core';
+// import { CommonModule, CurrencyPipe } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
+
+// @Component({
+//   selector: 'app-sales-widget',
+//   standalone: true,
+//   imports: [CommonModule, FormsModule, CurrencyPipe],
+//   templateUrl: './sales-widget.component.html',
+//   styleUrls: ['./sales-widget.component.css']
+// })
+// export class SalesWidgetComponent {
+//   loading = true;
+//   searchTerm = '';
+//   sales: any[] = [];
+//   filteredSales: any[] = [];
+
+//   ngOnInit() {
+//     setTimeout(() => {
+//       this.sales = 
+//         [
+//     { product: 'Laptop', amount: 55000, date: '2025-10-25' },
+//     { product: 'Phone', amount: 25000, date: '2025-10-26' },
+//     { product: 'Headphones', amount: 5000, date: '2025-10-27' }
+//   ];
+//       this.filteredSales = [...this.sales];
+//       this.loading = false;
+//     }, 1000);
+//   }
+
+//   searchSales() {
+//     this.filteredSales = this.sales.filter(sale =>
+//       sale.product.toLowerCase().includes(this.searchTerm.toLowerCase())
+//     );
+//   }
+
+//   trackById(index: number, item: any) {
+//     return item.id;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http'; // ✅ Import HttpClient
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -334,23 +392,34 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './sales-widget.component.html',
   styleUrls: ['./sales-widget.component.css']
 })
-export class SalesWidgetComponent {
+export class SalesWidgetComponent implements OnInit {
   loading = true;
   searchTerm = '';
   sales: any[] = [];
   filteredSales: any[] = [];
 
+  constructor(private http: HttpClient) {}
+
   ngOnInit() {
-    setTimeout(() => {
-      this.sales = 
-        [
-    { product: 'Laptop', amount: 55000, date: '2025-10-25' },
-    { product: 'Phone', amount: 25000, date: '2025-10-26' },
-    { product: 'Headphones', amount: 5000, date: '2025-10-27' }
-  ];
-      this.filteredSales = [...this.sales];
-      this.loading = false;
-    }, 1000);
+    // ✅ Fetch mock API data
+    this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts')
+      .subscribe({
+        next: (data) => {
+          // ✅ Convert mock API data into sales-like structure
+          this.sales = data.slice(0, 10).map((item, index) => ({
+            product: `Product ${index + 1}`,
+            amount: Math.floor(Math.random() * 50000) + 5000, // random sales amount
+            date: new Date().toISOString().split('T')[0]
+          }));
+
+          this.filteredSales = [...this.sales];
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error fetching sales data:', err);
+          this.loading = false;
+        }
+      });
   }
 
   searchSales() {
@@ -360,6 +429,16 @@ export class SalesWidgetComponent {
   }
 
   trackById(index: number, item: any) {
-    return item.id;
+    return index;
   }
 }
+
+
+
+
+
+
+
+
+
+

@@ -31,7 +31,7 @@
 
 
 
-
+<!-- 
 <div class="p-4 bg-white rounded-xl shadow-md">
   <h2 class="text-lg font-bold mb-2">User List</h2>
 
@@ -53,4 +53,69 @@
       </tr>
     </tbody>
   </table>
+</div> 
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="p-4 bg-white rounded-xl shadow-md">
+  <h2 class="text-lg font-bold mb-3 text-gray-800">User List</h2>
+
+  <div *ngIf="loading" class="loading">
+    Loading users...
+  </div>
+
+  <div *ngIf="!loading">
+    <!-- Desktop Table -->
+    <div class="table-wrapper">
+      <table class="desktop-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; trackBy: trackById">
+            <td class="font-medium text-gray-900">{{ user.name }}</td>
+            <td class="text-blue-600">{{ user.email }}</td>
+            <td class="text-purple-600 font-mono text-sm">{{ user.username }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile Cards -->
+    <div class="mobile-cards">
+      <div *ngFor="let user of users; trackBy: trackById" class="user-card">
+        <div class="card-row">
+          <span class="card-label">Name:</span>
+          <span class="card-value font-medium text-gray-900">{{ user.name }}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">Email:</span>
+          <span class="card-value text-blue-600">{{ user.email }}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-label">Username:</span>
+          <span class="card-value text-purple-600 font-mono">{{ user.username }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
